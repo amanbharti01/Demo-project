@@ -1,0 +1,26 @@
+stages:
+  - build
+  - test
+  - deliver-artifact
+
+build_job:
+  stage: build
+  script:
+    - echo "Building project..."
+  artifacts:
+    paths:
+      - index.html
+
+test_job:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - test -f index.html
+
+create_artifact:
+  stage: deliver-artifact
+  script:
+    - echo "Artifact ready!"
+  artifacts:
+    paths:
+      - index.html
